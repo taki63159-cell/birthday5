@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday Anwesha 💖</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+text-align:center;
+color:white;
+background:black;
+overflow:hidden;
+}
+
+/* stars */
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+0%{opacity:0.3;}
+50%{opacity:1;}
+100%{opacity:0.3;}
+}
+
+.container{
+margin-top:70px;
+}
+
+h1{
+font-size:60px;
+text-shadow:0 0 20px pink;
+}
+
+/* photo */
+
+.photo{
+width:220px;
+height:220px;
+border-radius:50%;
+border:6px solid white;
+object-fit:cover;
+box-shadow:0 0 40px pink;
+margin:20px;
+}
+
+/* gift */
+
+.gift{
+font-size:120px;
+cursor:pointer;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+
+/* cake */
+
+.cake{
+font-size:120px;
+display:none;
+animation:float 2s infinite;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+button{
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff4d6d;
+cursor:pointer;
+margin:10px;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎉 Happy Birthday Anwesha 🎉</h1>
+
+<img src="anwesha.jpg" class="photo">
+
+<p>Click the gift for your surprise 🎁</p>
+
+<div class="gift" onclick="openGift()">🎁</div>
+
+<div class="cake" id="cake">🎂</div>
+
+<button onclick="playMusic()">🎵 Play Music</button>
+
+<p id="message"></p>
+
+</div>
+
+<audio id="song">
+<source src="https://www2.cs.uic.edu/~i101/SoundFiles/BirthdaySong.mp3">
+</audio>
+
+<script>
+
+/* create stars */
+
+for(let i=0;i<100;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"%";
+
+star.style.top=Math.random()*100+"%";
+
+document.body.appendChild(star);
+
+}
+
+/* open gift */
+
+function openGift(){
+
+document.getElementById("cake").style.display="block";
+
+document.getElementById("message").innerHTML=
+"💖 Dear Anwesha 💖 <br> May your birthday be filled with happiness, laughter and beautiful memories. You deserve all the joy in the world! 🎂✨";
+
+confetti();
+
+}
+
+/* music */
+
+function playMusic(){
+
+document.getElementById("song").play();
+
+}
+
+/* confetti */
+
+function confetti(){
+
+for(let i=0;i<60;i++){
+
+let c=document.createElement("div");
+
+c.style.position="absolute";
+
+c.style.width="8px";
+
+c.style.height="8px";
+
+c.style.background="hsl("+Math.random()*360+"deg,100%,50%)";
+
+c.style.left=Math.random()*100+"%";
+
+c.style.top="-10px";
+
+document.body.appendChild(c);
+
+let fall=setInterval(()=>{
+
+c.style.top=(c.offsetTop+5)+"px";
+
+if(c.offsetTop>window.innerHeight){
+
+clearInterval(fall);
+
+c.remove();
+
+}
+
+},20);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
